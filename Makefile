@@ -18,9 +18,6 @@ test:
 cover:
 	npm test -- --coverage --coverageProvider=v8
 
-test-watch:
-	npm run test-watch
-
 publish:
 	npm publish
 

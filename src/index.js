@@ -1,14 +1,8 @@
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
+
+import getParsedData from './parsers/parser.js';
 
 export default (filepath1, filepath2) => {
-  const getParsedData = (filepath) => {
-    const absolutePath = path.resolve(process.cwd(), filepath);
-    const data = fs.readFileSync(absolutePath, 'utf-8');
-    return JSON.parse(data);
-  };
-
   const obj1 = getParsedData(filepath1);
   const obj2 = getParsedData(filepath2);
   const ownKeysObj2 = Object.keys(obj2).filter((key) => !_.has(obj1, key));

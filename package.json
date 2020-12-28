@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "File Difference Finder",
   "main": "index.js",
+  "bin": {
+    "gendiff": "./bin/gendiff.js"
+  },
   "scripts": {
     "test": "npx jest"
-	},
-	"type": "module",
+  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/denbon05/backend-project-lvl2.git"
@@ -16,10 +19,15 @@
   "bugs": {
     "url": "https://github.com/denbon05/backend-project-lvl2/issues"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
+  },
   "homepage": "https://github.com/denbon05/backend-project-lvl2#readme",
   "dependencies": {
     "commander": "^6.2.1",
     "debug": "^4.3.1",
+    "js-yaml": "^3.14.1",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
