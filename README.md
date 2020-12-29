@@ -8,3 +8,5 @@ File Difference Finder
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5c40ba67538b7e12433/test_coverage)](https://codeclimate.com/github/denbon05/backend-project-lvl2/test_coverage)
 
 [![asciicast](https://asciinema.org/a/siKC3lP19boWFgEYrzvfEh99y.svg)](https://asciinema.org/a/siKC3lP19boWFgEYrzvfEh99y)
+
+[![asciicast](https://asciinema.org/a/5wX4hrFyM0EAcGdnm35kT7dMO.svg)](https://asciinema.org/a/5wX4hrFyM0EAcGdnm35kT7dMO)

@@ -13,7 +13,7 @@ fix:
 	npx eslint --fix .
 
 test:
-	npm test
+	npx -n --experimental-vm-modules jest --no-warnings
 
 cover:
 	npm test -- --coverage --coverageProvider=v8
