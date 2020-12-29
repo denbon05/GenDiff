@@ -10,7 +10,7 @@ import getParsedData from '../src/parsers/parser.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const ymlFiles = ['flat1.yml', 'flat2.yml'];
+const ymlFiles = ['file1.yml', 'file2.yml'];
 const jsonFiles = ['file1.json', 'file2.json'];
 
 const getPath = (name) => path.resolve(__dirname, '..', '__fixtures__', name);
@@ -30,15 +30,15 @@ describe('parse file', () => {
 });
 
 describe('show difference in files', () => {
+  const expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
+
   test('JSON files', () => {
-    const expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
     const actual = getDiff(getPath('file1.json'), getPath('file2.json'));
     expect(actual).toEqual(expected);
   });
 
   test('YML files', () => {
-    const expected = fs.readFileSync(getPath('result2.txt'), 'utf-8');
-    const actual = getDiff(getPath('flat1.yml'), getPath('flat2.yml'));
+    const actual = getDiff(getPath('file1.yml'), getPath('file2.yml'));
     expect(expected).toEqual(actual);
   });
 });

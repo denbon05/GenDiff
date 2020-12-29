@@ -1,8 +1,0 @@
-{
-  - job: Designer
-  + job: Developer
-    name: Martin D'vloper
-  - sex: male
-  - skill: Medium
-  + skill: Elite
-}

@@ -40,7 +40,6 @@ jobs:
         # Run Linter
         run: |
           make fix
-          make lint
       - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
