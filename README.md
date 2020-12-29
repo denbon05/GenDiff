@@ -4,9 +4,10 @@ File Difference Finder
 [![Actions Status](https://github.com/denbon05/backend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/denbon05/backend-project-lvl2/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5c40ba67538b7e12433/maintainability)](https://codeclimate.com/github/denbon05/backend-project-lvl2/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5c40ba67538b7e12433/test_coverage)](https://codeclimate.com/github/denbon05/backend-project-lvl2/test_coverage)
 
+Check difference in JSON files
 [![asciicast](https://asciinema.org/a/siKC3lP19boWFgEYrzvfEh99y.svg)](https://asciinema.org/a/siKC3lP19boWFgEYrzvfEh99y)
 
+Check difference in YAML files
 [![asciicast](https://asciinema.org/a/5wX4hrFyM0EAcGdnm35kT7dMO.svg)](https://asciinema.org/a/5wX4hrFyM0EAcGdnm35kT7dMO)
