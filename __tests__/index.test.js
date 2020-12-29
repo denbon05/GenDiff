@@ -18,27 +18,33 @@ const getPath = (name) => path.resolve(__dirname, '__fixtures__', name);
 describe('parse file', () => {
   test.each(jsonFiles)('parse JSON %s', (fileName) => {
     const data1 = fs.readFileSync(getPath(fileName), 'utf-8');
-    const actual = getParsedData(getPath(fileName));
-    expect(JSON.parse(data1)).toEqual(actual);
+    const actual1 = getParsedData(getPath(fileName));
+    expect(JSON.parse(data1)).toEqual(actual1);
   });
 
   test.each(ymlFiles)('parse YML %s', (fileName) => {
     const data2 = fs.readFileSync(getPath(fileName), 'utf-8');
-    const actual = getParsedData(getPath(fileName));
-    expect(yaml.safeLoad(data2)).toEqual(actual);
+    const actual2 = getParsedData(getPath(fileName));
+    expect(yaml.safeLoad(data2)).toEqual(actual2);
   });
 });
 
 describe('show difference in files', () => {
-  test('JSON files difference', () => {
+  test('JSON files', () => {
     const expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
     const actual = getDiff(getPath('file1.json'), getPath('file2.json'));
     expect(actual).toEqual(expected);
   });
 
-  test('YML files difference', () => {
+  test('YML files', () => {
     const expected = fs.readFileSync(getPath('result2.txt'), 'utf-8');
     const actual = getDiff(getPath('flat1.yml'), getPath('flat2.yml'));
     expect(expected).toEqual(actual);
-  });
+	});
+	
+	test('JSON nested files', () => {
+		const expected = fs.readFileSync(getPath('result3.txt'), 'utf-8');
+		const actual = getDiff(getPath('nested1.json'), getPath('nested2.json'));
+		expect(expected).toEqual(actual);
+	});
 });
