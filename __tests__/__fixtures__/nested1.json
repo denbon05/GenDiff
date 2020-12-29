@@ -1,0 +1,12 @@
+{
+  "id": 82,
+  "email": "jack@dev.com",
+  "personalInfo": {
+    "name": "Jack",
+    "address": {
+      "line1": "westwish st",
+      "city": "wallas",
+      "state": "WX"
+    }
+  }
+}

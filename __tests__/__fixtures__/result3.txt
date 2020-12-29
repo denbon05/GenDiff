@@ -1,0 +1,18 @@
+{
+    email: jack@dev.com
+  - id: 82
+  + id: 101
+    personalInfo: {
+          address: {
+              - city: wallas
+              + city: new yourk
+                line1: westwish st
+              + line2: washmasher
+              - state: WX
+              + state: WD
+          }
+        - name: Jack
+        + name: John
+        + surname: Dalton
+    }
+}

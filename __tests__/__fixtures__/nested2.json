@@ -1,0 +1,14 @@
+{
+  "id": 101,
+  "email": "jack@dev.com",
+  "personalInfo": {
+    "name": "John",
+    "surname": "Dalton",
+    "address": {
+      "line1": "westwish st",
+      "line2": "washmasher",
+      "city": "new yourk",
+      "state": "WD"
+    }
+  }
+}
