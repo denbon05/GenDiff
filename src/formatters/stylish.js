@@ -27,8 +27,8 @@ export default (o1, o2) => {
         if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
           acc[`${' '.repeat(spaceCount)}${key}`] = genDeepDiff(value1, value2);
           return acc;
-				}
-				if (_.isPlainObject(value1) || _.isPlainObject(value2)) {
+        }
+        if (_.isPlainObject(value1) || _.isPlainObject(value2)) {
           if (_.isPlainObject(value1) && _.isUndefined(value2)) {
             acc[`- ${key}`] = makeNode(value1);
           }

@@ -3,7 +3,7 @@ import { test, expect, describe } from '@jest/globals';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import getDiff from '../index.js';
+import genDiff from '../index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -15,17 +15,17 @@ describe('show difference in files', () => {
   const expected2 = fs.readFileSync(getPath('plain.txt'), 'utf-8');
 
   test('JSON stylish format as default', () => {
-    const actual = getDiff(getPath('file1.json'), getPath('file2.json'));
+    const actual = genDiff(getPath('file1.json'), getPath('file2.json'));
     expect(actual).toEqual(expected);
   });
 
   test('YAML stylish format as default', () => {
-    const actual = getDiff(getPath('file1.yml'), getPath('file2.yml'));
+    const actual = genDiff(getPath('file1.yml'), getPath('file2.yml'));
     expect(expected).toEqual(actual);
   });
 
   test('different extension with stylish format', () => {
-    const actual3 = getDiff(getPath('file1.json'), getPath('file2.yml'));
+    const actual3 = genDiff(getPath('file1.json'), getPath('file2.yml'));
     expect(expected).toEqual(actual3);
   });
 

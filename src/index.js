@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import formatOutput from './formatters/index.js';
 
 import getParsedData from './parsers/parser.js';
