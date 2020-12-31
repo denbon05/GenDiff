@@ -1,15 +1,17 @@
 import _ from 'lodash';
 
 const genString = (action) => (propPath, value = '', oldValue = '') => {
-  const val = _.isPlainObject(value) ? '[complex value]' : `'${value}'`;
-  const oldVal = _.isPlainObject(oldValue) ? '[complex value]' : `'${oldValue}'`;
+	const val = _.isPlainObject(value) ? '[complex value]' :
+		_.isBoolean(value) || _.isNull(value) ? value : `'${value}'`;
+	const oldVal = _.isPlainObject(oldValue) ? '[complex value]' :
+		_.isBoolean(oldValue) || _.isNull(oldValue) ? oldValue : `'${oldValue}'`;
   switch (action) {
     case 'added':
-      return `Property ${propPath} was ${action} with value: ${val}`;
+      return `Property '${propPath}' was ${action} with value: ${val}`;
     case 'removed':
-      return `Property ${propPath} was ${action}`;
+      return `Property '${propPath}' was ${action}`;
     case 'updated':
-      return `Property ${propPath} was ${action}. From ${oldVal} to ${val}`;
+      return `Property '${propPath}' was ${action}. From ${oldVal} to ${val}`;
     default:
       throw Error(`Unknow case action: ${action}`);
   }
@@ -40,12 +42,21 @@ const actions = {
   update: genString('updated'),
 };
 
+const isBouthComplex = (obj1, obj2, path) => {
+	const isComplex1 = _.isPlainObject(_.get(obj1, path));
+	const isComplex2 = _.isPlainObject(_.get(obj2, path));
+	return isComplex1 && isComplex2;
+};
+
 const getAction = (o1, o2, path) => {
-  if (_.has(o2, path) && !_.has(o1, path)) return 'add';
-  if (_.has(o2, path) && _.has(o1, path)) {
-    return _.isEqual(_.get(o2, path), _.get(o1, path)) ? null : 'update';
-  }
-  return 'remove';
+	if (_.has(o2, path) && !_.has(o1, path)) return 'add';
+	if (_.has(o2, path) && _.has(o1, path)) {
+		if (!_.isEqual(_.get(o2, path), _.get(o1, path)) && !isBouthComplex(o1, o2, path)) {
+			return 'update';
+		}
+	}
+	if (!_.has(o2, path) && _.has(o1, path)) return 'remove';
+	return null;
 };
 
 export default (obj1, obj2) => {
@@ -58,7 +69,12 @@ export default (obj1, obj2) => {
       const actionType = getAction(obj1, obj2, path);
       const val1 = _.get(obj1, path);
       const val2 = _.get(obj2, path);
-			if (!_.isNull(actionType)) acc.push(actions[actionType](path, val1, val2));
+			if (!_.isNull(actionType)) {
+				acc.push(actions[actionType](path, val2, val1));
+				allPaths.forEach((line, i, arr) => {
+					if (line.includes(path) && line.length > path.length) arr[i] = '';
+				});
+			}
       return acc;
     }, []);
   return differenceStrings.join('\n');
