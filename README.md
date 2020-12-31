@@ -6,7 +6,9 @@ File Difference Finder
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a5c40ba67538b7e12433/test_coverage)](https://codeclimate.com/github/denbon05/backend-project-lvl2/test_coverage)
 
 <b>Stylish format</b>
+
 [![asciicast](https://asciinema.org/a/381801.svg)](https://asciinema.org/a/381801)
 <hr>
 <b>Plain format</b>
+
 [![asciicast](https://asciinema.org/a/381993.svg)](https://asciinema.org/a/381993)
