@@ -13,13 +13,14 @@ const getPath = (name) => path.resolve(__dirname, '..', '__fixtures__', name);
 describe('show difference in files', () => {
   const expected = fs.readFileSync(getPath('result.txt'), 'utf-8');
   const expected2 = fs.readFileSync(getPath('plain.txt'), 'utf-8');
+  const expected3 = fs.readFileSync(getPath('result.json'), 'utf-8');
 
-  test('JSON stylish format as default', () => {
+  test('JSON extension with stylish format as default', () => {
     const actual = genDiff(getPath('file1.json'), getPath('file2.json'));
     expect(actual).toEqual(expected);
   });
 
-  test('YAML stylish format as default', () => {
+  test('YAML extension with stylish format as default', () => {
     const actual = genDiff(getPath('file1.yml'), getPath('file2.yml'));
     expect(expected).toEqual(actual);
   });
@@ -32,5 +33,10 @@ describe('show difference in files', () => {
   test('plain format', () => {
     const actual4 = genDiff(getPath('file1.yml'), getPath('file2.yml'), 'plain');
     expect(actual4).toEqual(expected2);
+  });
+
+  test('json format', () => {
+    const actual5 = genDiff(getPath('file1.yml'), getPath('file2.yml'), 'json');
+    expect(actual5).toEqual(expected3);
   });
 });
