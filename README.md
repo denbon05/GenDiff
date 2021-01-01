@@ -31,10 +31,18 @@
 	<pre>gendiff ~/file1.json ~/file2.yaml [-f] [format name]</pre>
 </p>
 
+<hr>
+
+<h2>Usage with formats</h2>
+
+
 <b>Stylish format</b>
 
 [![asciicast](https://asciinema.org/a/381801.svg)](https://asciinema.org/a/381801)
-<hr>
 <b>Plain format</b>
 
 [![asciicast](https://asciinema.org/a/381993.svg)](https://asciinema.org/a/381993)
+
+<b>JSON format</b>
+
+[![asciicast](https://asciinema.org/a/382151.svg)](https://asciinema.org/a/382151)
