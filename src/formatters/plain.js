@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const normalizeValue = (val) => {
   if (_.isPlainObject(val)) return '[complex value]';
-  if (_.isBoolean(val) || _.isNull(val)) return val;
+  if (_.isBoolean(val) || _.isNull(val) || _.isInteger(val)) return val;
   return `'${val}'`;
 };
 

@@ -3,11 +3,14 @@ install: install-deps
 install-deps:
 	npm ci
 
-run:
-	node ./bin/gendiff.js ./__fixtures__/file1.json ./__fixtures__/file2.json
+publish:
+	npm publish --dry-run
 
 test:
 	npm test
+
+tw:
+	npx -n --experimental-vm-modules jest --watch --no-warnings
 
 cover:
 	npm test -- --coverage --coverageProvider=v8
