@@ -1,10 +1,9 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
 import path from 'path';
-import _ from 'lodash';
 
 const getParsedData = (filepath) => {
-	const absolutePath = path.resolve(process.cwd(), filepath);
+  const absolutePath = path.resolve(process.cwd(), filepath);
   const data = fs.readFileSync(absolutePath, 'utf-8');
   const fileExt = path.extname(absolutePath);
   switch (fileExt) {
