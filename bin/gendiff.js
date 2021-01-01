@@ -3,7 +3,7 @@ import fs from 'fs';
 import { program } from 'commander';
 import genDiff from '../index.js';
 
-const pkgVersion = JSON.parse(fs.readFileSync('package.json', 'utf-8'))
+const pkgVersion = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
   .version;
 
 program
