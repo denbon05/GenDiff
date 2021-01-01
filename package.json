@@ -4,7 +4,7 @@
   "description": "File Difference Finder",
   "main": "index.js",
   "bin": {
-    "gendiff": "./bin/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "scripts": {
 		"test": "npx jest",
