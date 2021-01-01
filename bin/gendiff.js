@@ -3,11 +3,11 @@ import fs from 'fs';
 import { program } from 'commander';
 import genDiff from '../index.js';
 
-const pkgVersion = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
-  .version;
+// const pkgVersion = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
+//   .version;
 
 program
-  .version(pkgVersion)
+  .version('1.0.0')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format', 'stylish')
   .arguments('<filepath1> <filepath2>')
