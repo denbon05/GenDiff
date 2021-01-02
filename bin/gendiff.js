@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // import fs from 'fs';
-import { program } from 'commander';
+import pkg from 'commander';
+const { program } = pkg;
 import genDiff from '../index.js';
 
 // const pkgVersion = JSON.parse(fs.readFileSync('./package.json', 'utf-8'))
