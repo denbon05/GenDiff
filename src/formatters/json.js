@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import getSortedKeys from '../ast.js';
 
 const isSimpleValue = (val) => _.isString(val) || _.isBoolean(val)
 || _.isInteger(val) || _.isNull(val) || _.isNaN(val);
@@ -13,8 +14,6 @@ const getStatus = (o1, o2) => {
   if (isExist(o1) && isExist(o2) && !_.isEqual(o1, o2)) return 'updated';
   return 'equal';
 };
-
-const getSortedKeys = (o1, o2) => _.union(Object.keys(o1), Object.keys(o2)).sort();
 
 export default (obj1, obj2) => {
   const getDiff = (o1, o2) => getSortedKeys(o1, o2)

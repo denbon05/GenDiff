@@ -1,5 +1,5 @@
 {
-  "name": "backend-project-lvl2",
+  "name": "gendiff-den",
   "version": "1.0.0",
   "description": "File Difference Finder",
   "main": "index.js",
@@ -27,7 +27,6 @@
   "homepage": "https://github.com/denbon05/backend-project-lvl2#readme",
   "dependencies": {
     "commander": "^6.2.1",
-    "debug": "^4.3.1",
     "js-yaml": "^3.14.1",
     "lodash": "^4.17.20"
   },

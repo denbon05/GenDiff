@@ -21,10 +21,4 @@ lint:
 fix:
 	npx eslint --fix .
 
-link:
-	npm link
-
-unlink:
-	npm unlink
-
 .PHONY: test
