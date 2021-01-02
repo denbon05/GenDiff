@@ -1,5 +1,5 @@
 {
-  "name": "gendiff-den",
+  "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "File Difference Finder",
   "main": "index.js",

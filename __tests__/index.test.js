@@ -21,13 +21,13 @@ describe('show difference in files', () => {
   });
 
   test('YAML extension with stylish format as default', () => {
-    const actual = genDiff(getPath('file1.yml'), getPath('file2.yml'));
-    expect(expected).toEqual(actual);
+    const actual2 = genDiff(getPath('file1.yml'), getPath('file2.yml'));
+    expect(actual2).toEqual(expected);
   });
 
   test('different extension with stylish format', () => {
     const actual3 = genDiff(getPath('file1.json'), getPath('file2.yml'));
-    expect(expected).toEqual(actual3);
+    expect(actual3).toEqual(expected);
   });
 
   test('plain format', () => {
