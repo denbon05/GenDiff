@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import fs from 'fs';
+// import fs from 'fs';
 import { program } from 'commander';
 import genDiff from '../index.js';
 
