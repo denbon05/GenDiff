@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import buildDiffAST from '../ast.js';
 
 const normalizeObj = (obj) => {
   if (!_.isPlainObject(obj)) return `${obj}`;
@@ -9,8 +8,7 @@ const normalizeObj = (obj) => {
 
 const normalizeValue = (val) => (_.isPlainObject(val) ? normalizeObj(val) : val);
 
-export default (obj1, obj2) => {
-  const diffAST = buildDiffAST(obj1, obj2);
+export default (diffAST) => {
   const getStylishDiff = (ast) => {
     const keys = Object.keys(ast);
     return keys.reduce((acc, key) => {

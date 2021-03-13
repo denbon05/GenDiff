@@ -1,7 +1,14 @@
-import buildDiffAST from '../ast.js';
-
-export default (obj1, obj2) => {
-  const diffAST = buildDiffAST(obj1, obj2);
+export default (diffAST) => {
+  // return JSON.stringify(diffAST);
+  // const getDataAST = (ast) => Object.values(ast).reduce((acc, val, idx) => {
+  //   if (val.status === 'equal') return acc;
+  //   if (val.status === 'nested') {
+  //     return [...acc, { key: val.key, status: val.status, children: getDataAST(val.children) }];
+  //   }
+  //   return [...acc, val];
+  // }, []);
+  // return JSON.stringify(getDataAST(diffAST));
+  // console.log('diffAST>>>', JSON.stringify(diffAST, null, 2));
   const getDataAST = (ast) => Object.keys(ast).reduce((acc, key) => {
     const {
       children, status, value, oldValue,

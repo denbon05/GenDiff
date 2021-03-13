@@ -2,14 +2,14 @@ import renderStylishFormat from './stylish.js';
 import renderPlainFormat from './plain.js';
 import renderJsonForamt from './json.js';
 
-export default (format, data1, data2) => {
+export default (format, ast) => {
   switch (format) {
     case 'stylish':
-      return renderStylishFormat(data1, data2);
+      return renderStylishFormat(ast);
     case 'plain':
-      return renderPlainFormat(data1, data2);
+      return renderPlainFormat(ast);
     case 'json':
-      return renderJsonForamt(data1, data2);
+      return renderJsonForamt(ast);
     default:
       throw Error(`Unknow format: "${format}"`);
   }

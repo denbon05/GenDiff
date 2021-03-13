@@ -1,66 +1,60 @@
+// @ts-check
+
 import _ from 'lodash';
 
-const isSimpleValue = (val) => _.isString(val) || _.isBoolean(val)
-|| _.isInteger(val) || _.isNull(val) || _.isNaN(val);
+const isSimpleValue = (value) => _.isString(value) || _.isBoolean(value)
+|| _.isInteger(value) || _.isNull(value) || _.isNaN(value);
 
 const isComplex = (value) => _.isPlainObject(value) && !_.isEmpty(value);
-const isExist = (val) => !_.isEmpty(val) || isSimpleValue(val);
+const isExist = (value) => !_.isEmpty(value) || isSimpleValue(value);
 
-const getSortedKeys = (o1, o2) => {
-  const keys = _.union(Object.keys(o1), Object.keys(o2));
+const getSortedKeys = (data1, data2) => {
+  const keys = _.union(Object.keys(data1), Object.keys(data2));
   return _.sortBy(keys);
 };
 
-const getAction = (o1, o2) => {
-  if (!isExist(o1) && isExist(o2)) return 'added';
-  if (isExist(o1) && !isExist(o2)) return 'deleted';
-  if (isComplex(o1) && isComplex(o2)) return 'nested';
-  if (isExist(o1) && isExist(o2) && !_.isEqual(o1, o2)) return 'updated';
+const getAction = (node1, node2) => {
+  if (!isExist(node1) && isExist(node2)) return 'added';
+  if (isExist(node1) && !isExist(node2)) return 'deleted';
+  if (isComplex(node1) && isComplex(node2)) return 'nested';
+  if (isExist(node1) && isExist(node2) && !_.isEqual(node1, node2)) return 'updated';
   return 'equal';
 };
 
-const buildDiffAST = (obj1, obj2) => {
-  const buildNode = (status) => (o1, o2, key) => {
+const buildAST = (data1, data2) => {
+  const buildNode = (child1, child2, key, status) => {
     switch (status) {
       case 'added':
         return {
-          status, key, value: o2,
+          status, key, value: child2,
         };
       case 'deleted':
         return {
-          status, key, value: o1,
+          status, key, value: child1,
         };
       case 'nested':
         return {
-          status, key, children: buildDiffAST(o1, o2),
+          status, key, children: buildAST(child1, child2),
         };
       case 'updated':
         return {
-          status, key, oldValue: o1, value: o2,
+          status, key, oldValue: child1, value: child2,
         };
       case 'equal':
         return {
-          status, key, value: o1,
+          status, key, value: child1,
         };
       default:
         throw Error(`Unknow action: "${status}"`);
     }
   };
 
-  const actions = {
-    added: buildNode('added'),
-    deleted: buildNode('deleted'),
-    nested: buildNode('nested'),
-    updated: buildNode('updated'),
-    equal: buildNode('equal'),
-  };
-
-  return getSortedKeys(obj1, obj2).reduce((acc, key) => {
-    const val1 = _.get(obj1, key, {});
-    const val2 = _.get(obj2, key, {});
-    const actionType = getAction(val1, val2);
-    return { ...acc, [key]: actions[actionType](val1, val2, key) };
+  return getSortedKeys(data1, data2).reduce((acc, key) => {
+    const child1 = _.get(data1, key, {});
+    const child2 = _.get(data2, key, {});
+    const actionType = getAction(child1, child2);
+    return { ...acc, [key]: buildNode(child1, child2, key, actionType) };
   }, {});
 };
 
-export default buildDiffAST;
+export default buildAST;
