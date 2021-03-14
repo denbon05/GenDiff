@@ -1,9 +1,7 @@
-import _ from 'lodash';
-
 const normalizeValue = (value) => {
-  if (_.isPlainObject(value)) return '[complex value]';
-  if (typeof value === 'boolean' || _.isNull(value) || _.isInteger(value)) return value;
-  return `'${value}'`;
+  if (typeof value === 'object' && value !== null) return '[complex value]';
+  if (typeof value === 'string') return `'${value}'`;
+  return value;
 };
 
 const genString = (propPath, action, value = '', oldValue = '') => {
